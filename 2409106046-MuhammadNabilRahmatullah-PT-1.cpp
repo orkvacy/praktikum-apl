@@ -67,7 +67,10 @@ int main() {
         if (pilihan == 1){ //setor tunai
             float setor;
             cout << "Masukkan Jumlah yang ingin anda setor (IDR)";
-            if (!(cin >> setor)){
+            cin >> setor;
+            if (cin.fail() || cin.peek() != '\n'){
+
+            
                 cout << "Input tidak Valid! Silahkan input angka." << endl;
                 clearInput();
                 system("pause");
@@ -87,8 +90,9 @@ int main() {
         } else if (pilihan == 3){ // tarik tunai
             float tarik;
             cout << "Masukkan Nominal Uang (Rp)";
-            if (!(cin >> tarik)){
-                cout << "Input tidak valid! Silahkan input angka." << endl;
+            cin >> tarik;
+            if(cin.fail() || cin.peek() != '\n'){
+                cout << "Input tidak valid! Silahkan input angka" << endl;
                 clearInput();
                 system("pause");
                 continue;
