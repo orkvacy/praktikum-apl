@@ -1,6 +1,7 @@
 #include <iostream>
 #include <limits>
 #include <cstdlib> //buat clear
+#include <conio.h> //ubah tampilan input jadi *
 using namespace std;
 
 void clearTerminal(){
@@ -25,26 +26,43 @@ int main() {
     const int maxPercobaan = 3;
 
     string inputPIN;
+    char ch;
     bool loginSuc = false;
 
     while (percobaan < maxPercobaan){
+        inputPIN = "";
         cout << "Masukkan PIN : ";
-        cin >> inputPIN;
-        if(inputPIN == PIN) {
-            cout <<"Login Berhasil!" << endl;
+        
+        while (true) {
+            ch = getch();
+            if (ch == 13){
+                cout << endl;
+                break;
+            } else if (ch == 8 && inputPIN.length() > 0) {
+                inputPIN.pop_back();
+                cout << "\b \b";
+
+            } else if (ch >= '0' && ch <= '9' && inputPIN.length() < 4){
+                inputPIN.push_back(ch);
+                cout << "*";
+            }
+        }
+
+        if (inputPIN == PIN){
+            cout << "Login Berhasil!" << endl;
             loginSuc = true;
             break;
+            
         } else {
             percobaan++;
-            cout <<"PIN salah! Sisa percobaan" << percobaan << "/" << maxPercobaan << endl;
-
+            cout << "Pin Salah! Sisa percobaan " << percobaan << "/" << maxPercobaan << endl;
         }
     }
-
     if (!loginSuc){
-        cout << "Akun anda terblokir! Silahkan hubungi call center" << endl;
+        cout<<"Akun Anda terblokir, silahkan hubungin call center!" << endl;
         return 0;
     }
+
     int pilihan;
 
     do{
@@ -109,7 +127,7 @@ int main() {
             }
 
         } else if (pilihan == 4){
-            cout << "Terimakasih sudah memakai layanan kami!" << endl;
+            cout << "Terimakasih telah memakai layanan kami!" << endl;
             break;
         } else {
             cout << "Pilihan Tidak Valid!" << endl;
