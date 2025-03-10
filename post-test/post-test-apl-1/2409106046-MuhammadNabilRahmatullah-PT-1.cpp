@@ -17,6 +17,13 @@ void clearInput(){
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
+void tampilkanGaris(int panjang) {
+    for (int i = 0; i < panjang; i++) {
+        cout << "=";
+    }
+    cout << endl;
+}
+
 int main() {
     string PIN = "6046";
 
@@ -67,12 +74,18 @@ int main() {
 
     do{
         clearTerminal();
-        cout << "Pilih Transaksi yang Anda Inginkan" << endl;
-        cout << "1. Setor Tunai" << endl;
-        cout << "2. Cek Saldo" << endl;
-        cout << "3. Tarik Tunai" << endl;
-        cout << "4. Keluar" << endl;
-        cout << "Pilihan Menu (1-4)" << endl;
+        tampilkanGaris(50);
+        cout << "            MENU PILIHAN TRANSAKSI          " << endl;
+        tampilkanGaris(50);
+        cout << endl;
+        cout << "  [ 1 ]  |  Setor Tunai                     " << endl;
+        cout << "  [ 2 ]  |  Cek Saldo                       " << endl;
+        cout << "  [ 3 ]  |  Tarik Tunai                     " << endl;
+        cout << "  [ 4 ]  |  Keluar                          " << endl;
+        tampilkanGaris(50);
+        cout << endl;
+        cout << "Silahkan Pilih Menu (1-4): ";
+        
         if (!(cin >> pilihan)){
             cout << "Input tidak valid! Silahkan Masukkan angka" << endl;
             clearInput();
@@ -83,12 +96,15 @@ int main() {
         clearTerminal();
 
         if (pilihan == 1){ //setor tunai
+            tampilkanGaris(50);
+            cout << "                 SETOR TUNAI               " << endl;
+            tampilkanGaris(50);
+            cout << endl;
+            
             float setor;
-            cout << "Masukkan Jumlah yang ingin anda setor (IDR)";
+            cout << "Masukkan Jumlah yang ingin anda setor (IDR): ";
             cin >> setor;
             if (cin.fail() || cin.peek() != '\n'){
-
-            
                 cout << "Input tidak Valid! Silahkan input angka." << endl;
                 clearInput();
                 system("pause");
@@ -97,17 +113,35 @@ int main() {
 
             else if (setor > 0) {
                 saldo += setor;
-                cout << "Transaksi Anda berhasil! Saldo Sekarang " << saldo << endl;
+                cout << endl;
+                tampilkanGaris(50);
+                cout << "            TRANSAKSI BERHASIL            " << endl;
+                cout << "    Saldo Anda Sekarang: Rp " << saldo << endl;
+                tampilkanGaris(50);
             } else {
-                cout << "Jumlah yang disetor harus lebih dari Rp 0" << endl;
+                cout << endl;
+                tampilkanGaris(50);
+                cout << "  Jumlah yang disetor harus lebih dari Rp 0  " << endl;
+                tampilkanGaris(50);
             }
 
         } else if (pilihan == 2){ // cek saldo
-            cout << "Saldo Anda Saat Ini : Rp " << saldo << endl;
+            tampilkanGaris(50);
+            cout << "                CEK SALDO                  " << endl;
+            tampilkanGaris(50);
+            cout << endl;
+            cout << "       Saldo Anda Saat Ini: Rp " << saldo << endl;
+            cout << endl;
+            tampilkanGaris(50);
 
         } else if (pilihan == 3){ // tarik tunai
+            tampilkanGaris(50);
+            cout << "               TARIK TUNAI                 " << endl;
+            tampilkanGaris(50);
+            cout << endl;
+            
             float tarik;
-            cout << "Masukkan Nominal Uang (Rp)";
+            cout << "Masukkan Nominal Uang (Rp): ";
             cin >> tarik;
             if(cin.fail() || cin.peek() != '\n'){
                 cout << "Input tidak valid! Silahkan input angka" << endl;
@@ -118,23 +152,33 @@ int main() {
 
             if (tarik > 0 && tarik <= saldo) {
                 saldo -= tarik;
-                cout << "Transaksi berhasil! Saldo anda sekarang : Rp " << saldo << endl;
-
+                cout << endl;
+                tampilkanGaris(50);
+                cout << "            TRANSAKSI BERHASIL            " << endl;
+                cout << "    Saldo Anda Sekarang: Rp " << saldo << endl;
+                tampilkanGaris(50);
             } else if (tarik > saldo){
-                cout << "Saldo Anda Tidak Cukup!" << endl;
+                cout << endl;
+                tampilkanGaris(50);
+                cout << "          SALDO ANDA TIDAK CUKUP          " << endl;
+                tampilkanGaris(50);
             } else {
-                cout << "Jumlah yang ditarik harus lebih dari Rp 0" << endl;
+                cout << endl;
+                tampilkanGaris(50);
+                cout << "  Jumlah yang ditarik harus lebih dari Rp 0  " << endl;
+                tampilkanGaris(50);
             }
 
         } else if (pilihan == 4){
-            cout << "Terimakasih telah memakai layanan kami!" << endl;
+            tampilkanGaris(50);
+            cout << "              TERIMA KASIH                " << endl;
+            cout << "      Telah menggunakan layanan kami      " << endl;
+            tampilkanGaris(50);
             break;
         } else {
             cout << "Pilihan Tidak Valid!" << endl;
         }
         system("pause");
-
-
 
     } while (pilihan != 4);
     return 0;
