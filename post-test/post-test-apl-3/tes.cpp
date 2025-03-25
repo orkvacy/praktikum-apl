@@ -135,7 +135,7 @@ int main() {
                         for (int i = 0; i < jumlahUsers; i++) {
                             if (users[i].username == newUsername) {
                                 usernameValid = false;
-                                cout << "Username sudah digunakan. Coba yang lain.";
+                                cout << "Username sudah digunakan. Coba yang lain.\n";
                                 break;
                             }
                         }
