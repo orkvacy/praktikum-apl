@@ -270,7 +270,7 @@ int main() {
                 if (users[userIndex].isAdmin) {
                     pilihan = highlightArr + 1;
                 } else {
-                    pilihan = (highlightArr == 0) ? 2 : 6;
+                    pilihan = (highlightArr == 0) ? 1 : 2;
                 }
                 
                 system("cls");
