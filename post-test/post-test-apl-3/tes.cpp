@@ -114,9 +114,8 @@ int main() {
                         percobaan++;
                         cout << "Login gagal! Percobaan ke-" << percobaan << "\n";
                         if (percobaan >= 3) {
-                            cout << "Kesempatan habis, kembali ke menu awal.";
-                            system("pause");
-                            break;
+                            cout << "Kesempatan habis.";
+                            abort();
                         }
                     }
                 }
